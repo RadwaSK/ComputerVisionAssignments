@@ -81,6 +81,8 @@ def main():
     args = ap.parse_args()
 
     out_path = args.savePath
+    os.makedirs(out_path, exist_ok=True)
+
     total_error = 0
     files = os.listdir(args.srcdir)
     for i, image_path in enumerate(files):
@@ -129,9 +131,9 @@ def main():
         total_error += error
 
         # Saving resulting images in path given in args.savePath (out_path)
-        cv.imwrite(os.path.join(out_path, str(i) + '. corrected_cropped_gt_', image_path), correct_img)
-        cv.imwrite(os.path.join(out_path, str(i) + '. corrected_cropped_', image_path), predicted_img)
-        cv.imwrite(os.path.join(out_path, str(i) + '. orig_', image_path), image)
+        cv.imwrite(os.path.join(out_path, str(i) + '. corrected_cropped_gt_' + image_path), correct_img)
+        cv.imwrite(os.path.join(out_path, str(i) + '. corrected_cropped_' + image_path), predicted_img)
+        cv.imwrite(os.path.join(out_path, str(i) + '. orig_' + image_path), image)
         
         print("MSE at #%d is: %lf" % (i, error))
 
