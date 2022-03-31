@@ -77,7 +77,7 @@ def main():
     ap.add_argument("-i", "--srcdir", help = "path to the images directory", default='images')
     ap.add_argument("-n", "--gtdir", help = "path to npy groundtruth directory", default='gt')
     ap.add_argument("--norm", action="store_true", default=False)
-    ap.add_argument("--savePath", help='Path to directory to save output images', default='results')
+    ap.add_argument("-s", "--savePath", help='Path to directory to save output images', default='results')
     args = ap.parse_args()
 
     out_path = args.savePath
